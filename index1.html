@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>МАГАЗИН ДЛЯ ИГРУШЕК</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <section class="top-bar">
+      <div class="container">
+        <div class="btn-row">
+          <button class="btn-lang" data-lang="ru">RUS</button>
+          <button class="btn-lang" data-lang="chi">CHI</button>
+          <button class="btn-lang" data-lang="en">ENG</button>
+          <button class="btn-lang" id="fontSizeToggle">
+            <span><img src="img/Group 684.svg" /></span>
+          </button>
+          <a href="index3.html" class="btn-main">КАТАЛОГ</a>
+          <a href="index4.html" class="btn-main">НОВОСТИ</a>
+        </div>
+      </div>
+    </section>
+    <section class="gallery-block">
+      <div class="gallery-container">
+        <div class="gallery-item gallery-left">
+          <img
+            src="img/Group 770.svg"
+            alt="Изображение 1"
+            class="gallery-img"
+          />
+        </div>
+
+        <div class="gallery-item gallery-right">
+          <img
+            src="images/image2.png"
+            alt="Изображение 2"
+            class="gallery-img"
+          />
+        </div>
+
+        <div class="gallery-item gallery-bottom">
+          <img
+            src="img/Group 767.svg"
+            alt="Изображение 3"
+            class="gallery-img"
+          />
+        </div>
+      </div>
+    </section>
+    <section class="content-section">
+      <div class="container">
+        <h1 id="mainTitle">Добро пожаловать!</h1>
+        <p id="mainText">
+          Добро пожаловать на наш сайт, где игрушка может заказать себе товар и
+          мы его доставим!
+        </p>
+        <a href="index2.html" class="btn-main btn-secondary">Перейти</a>
+      </div>
+    </section>
+    <!-- ====== СЕКЦИЯ КОММЕНТАРИЕВ ====== -->
+    <section class="comments-section">
+      <div class="comments-container">
+        <!-- Заголовок -->
+        <h2 class="comments-title">КОММЕНТАРИИ</h2>
+
+        <!-- Форма ввода -->
+        <div class="comments-form">
+          <!-- Поле для имени -->
+          <input
+            type="text"
+            id="commentName"
+            class="comment-input"
+            placeholder="Ваше имя"
+            maxlength="50"
+          />
+
+          <!-- Поле для комментария -->
+          <input
+            type="text"
+            id="commentText"
+            class="comment-input"
+            placeholder="Напишите комментарий..."
+            maxlength="200"
+          />
+
+          <!-- Кнопка отправки -->
+          <button class="comment-btn" id="addCommentBtn">ОТПРАВИТЬ</button>
+        </div>
+
+        <!-- Блок с комментариями -->
+        <div class="comments-list" id="commentsList">
+          <!-- Комментарии будут появляться здесь -->
+        </div>
+      </div>
+    </section>
+    <script src="js/script.js"></script>
+  </body>
+</html>

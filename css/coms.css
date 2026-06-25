@@ -1,0 +1,287 @@
+/* ====== СЕКЦИЯ КОММЕНТАРИЕВ ====== */
+.comments-section {
+  background: #eba0a5;
+  width: 1280px;
+  max-width: 100%;
+  height: 736px;
+  margin: 0 auto;
+  padding: 40px 60px;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+}
+
+.comments-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ====== ЗАГОЛОВОК ====== */
+.comments-title {
+  color: #f5f3e6;
+  font-family: "Pribambas", sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  letter-spacing: 2px;
+}
+
+/* ====== ФОРМА ====== */
+.comments-form {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+/* Поля ввода */
+.comment-input {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 25px;
+  background: #f5f3e6;
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.comment-input::placeholder {
+  color: #18568f;
+  opacity: 0.5;
+}
+
+.comment-input:focus {
+  box-shadow: 0 0 0 3px #18568f;
+  transform: translateY(-2px);
+}
+
+/* Имя и текст комментария — 393x70 */
+#commentName,
+#commentText {
+  width: 393px;
+  height: 70px;
+  flex-shrink: 0;
+}
+
+/* ====== КНОПКА ОТПРАВКИ ====== */
+.comment-btn {
+  padding: 15px 40px;
+  border: none;
+  border-radius: 25px;
+  background: #18568f;
+  color: #f5f3e6;
+  font-family: "Pribambas", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(24, 86, 143, 0.3);
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.comment-btn:hover {
+  background: #f5f3e6;
+  color: #18568f;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(24, 86, 143, 0.4);
+}
+
+.comment-btn:active {
+  transform: scale(0.95);
+}
+
+/* ====== БЛОК С КОММЕНТАРИЯМИ ====== */
+.comments-list {
+  width: 900px;
+  height: 265px;
+  background: #f5f3e6;
+  border-radius: 25px;
+  padding: 20px 25px;
+  overflow-y: auto;
+  box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 5px;
+}
+
+/* Стилизация скроллбара */
+.comments-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.comments-list::-webkit-scrollbar-track {
+  background: rgba(24, 86, 143, 0.1);
+  border-radius: 10px;
+}
+
+.comments-list::-webkit-scrollbar-thumb {
+  background: #18568f;
+  border-radius: 10px;
+}
+
+.comments-list::-webkit-scrollbar-thumb:hover {
+  background: #eba0a5;
+}
+
+/* ====== ОДИН КОММЕНТАРИЙ ====== */
+.comment-item {
+  background: #f5f3e6;
+  padding: 12px 18px;
+  margin-bottom: 10px;
+  border-radius: 15px;
+  border-left: 4px solid #18568f;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  animation: commentFadeIn 0.3s ease;
+}
+
+.comment-item:last-child {
+  margin-bottom: 0;
+}
+
+.comment-author {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.comment-text {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 15px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+.comment-date {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 11px;
+  opacity: 0.5;
+  display: block;
+  margin-top: 4px;
+}
+
+/* ====== ПУСТОЕ СОСТОЯНИЕ ====== */
+.empty-comments {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 16px;
+  opacity: 0.5;
+  text-align: center;
+  padding-top: 80px;
+}
+
+/* ====== АНИМАЦИЯ ====== */
+@keyframes commentFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ====== АДАПТИВНОСТЬ ====== */
+@media (max-width: 1024px) {
+  .comments-section {
+    height: auto;
+    padding: 30px 40px;
+    min-height: 600px;
+  }
+
+  .comments-form {
+    gap: 10px;
+  }
+
+  #commentName,
+  #commentText {
+    width: 100%;
+    max-width: 393px;
+  }
+
+  .comments-list {
+    width: 100%;
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .comments-section {
+    padding: 20px 25px;
+    border-radius: 12px;
+  }
+
+  .comments-title {
+    font-size: 22px;
+  }
+
+  #commentName,
+  #commentText {
+    width: 100%;
+    height: 60px;
+    max-width: 100%;
+  }
+
+  .comment-btn {
+    width: 100%;
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .comments-list {
+    height: 180px;
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .comments-section {
+    padding: 15px 15px;
+    border-radius: 10px;
+    min-height: 500px;
+  }
+
+  .comments-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  #commentName,
+  #commentText {
+    height: 50px;
+    font-size: 14px;
+    padding: 10px 15px;
+  }
+
+  .comment-btn {
+    height: 50px;
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  .comments-list {
+    height: 150px;
+    padding: 12px;
+  }
+
+  .comment-author {
+    font-size: 14px;
+  }
+
+  .comment-text {
+    font-size: 13px;
+  }
+}

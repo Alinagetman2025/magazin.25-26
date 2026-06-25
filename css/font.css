@@ -1,0 +1,237 @@
+@font-face {
+  font-family: "Pribambas";
+  src: url("fonts/Pribambas-Regular.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+/* ====== БЛОК С ИЗОБРАЖЕНИЯМИ ====== */
+.gallery-block {
+  background: #18568f;
+  width: 1280px;
+  height: 810px;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+  border: none; /* ← Убираем рамку */
+}
+
+.gallery-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gallery-item {
+  position: absolute;
+  transition: all 0.5s ease;
+  border: none;
+  outline: none;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: none; /* ← Убираем рамку */
+  outline: none;
+}
+
+/* ====== 1. ИЗОБРАЖЕНИЕ СЛЕВА ====== */
+.gallery-left {
+  left: 30px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 320px;
+  height: 400px;
+  z-index: 2;
+  animation: floatLeft 4s ease-in-out infinite;
+  border: none; /* ← Убираем рамку */
+  outline: none;
+}
+
+/* ====== 2. ИЗОБРАЖЕНИЕ СПРАВА (С ТЕКСТОМ) ====== */
+.gallery-right {
+  right: 80px;
+  top: 80px;
+  width: 380px;
+  height: 450px;
+  z-index: 3;
+  animation: floatRight 5s ease-in-out infinite 0.5s;
+}
+
+/* Текст поверх изображения с наклоном 4° */
+.gallery-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(4deg);
+  color: #f5f3e6;
+  font-family: "Pribambas", sans-serif;
+  font-size: 48px;
+  font-weight: 900;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  z-index: 4;
+  pointer-events: none;
+  letter-spacing: 4px;
+  background: rgba(24, 86, 143, 0.3);
+  padding: 20px 40px;
+  border-radius: 16px;
+  backdrop-filter: blur(4px);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ====== 3. ИЗОБРАЖЕНИЕ СПРАВА СНИЗУ (ВЫЛЕЗАЕТ) ====== */
+.gallery-bottom {
+  right: -60px;
+  bottom: -40px;
+  width: 350px;
+  height: 400px;
+  z-index: 1;
+  animation: floatBottom 6s ease-in-out infinite 1s;
+}
+
+/* ====== АНИМАЦИИ ====== */
+
+/* Левый объект — плавно летает вверх-вниз */
+@keyframes floatLeft {
+  0%,
+  100% {
+    transform: translateY(-50%) scale(1);
+  }
+  50% {
+    transform: translateY(-60%) scale(1.02);
+  }
+}
+
+/* Правый объект — плавно покачивается */
+@keyframes floatRight {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+/* Нижний объект — вылезает и прячется */
+@keyframes floatBottom {
+  0%,
+  100% {
+    transform: translateX(0) translateY(0) scale(1);
+  }
+  50% {
+    transform: translateX(-20px) translateY(-15px) scale(1.05);
+  }
+}
+
+.gallery-item:hover .gallery-img {
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* ====== АДАПТИВНОСТЬ ====== */
+@media (max-width: 1024px) {
+  .gallery-block {
+    height: 600px;
+    width: 100%;
+  }
+
+  .gallery-left {
+    width: 220px;
+    height: 300px;
+    left: 20px;
+  }
+
+  .gallery-right {
+    width: 260px;
+    height: 330px;
+    right: 30px;
+    top: 50px;
+  }
+
+  .gallery-bottom {
+    width: 240px;
+    height: 280px;
+    right: -40px;
+    bottom: -20px;
+  }
+
+  .gallery-text {
+    font-size: 30px;
+    padding: 12px 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery-block {
+    height: 500px;
+  }
+
+  .gallery-left {
+    width: 160px;
+    height: 220px;
+    left: 10px;
+    top: 55%;
+  }
+
+  .gallery-right {
+    width: 200px;
+    height: 260px;
+    right: 20px;
+    top: 30px;
+  }
+
+  .gallery-bottom {
+    width: 180px;
+    height: 200px;
+    right: -30px;
+    bottom: -10px;
+  }
+
+  .gallery-text {
+    font-size: 22px;
+    padding: 8px 16px;
+    transform: translate(-50%, -50%) rotate(3deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-block {
+    height: 400px;
+    border-radius: 12px;
+  }
+
+  .gallery-left {
+    width: 120px;
+    height: 160px;
+    left: 8px;
+    top: 60%;
+  }
+
+  .gallery-right {
+    width: 150px;
+    height: 200px;
+    right: 10px;
+    top: 20px;
+  }
+
+  .gallery-bottom {
+    width: 130px;
+    height: 150px;
+    right: -20px;
+    bottom: -5px;
+  }
+
+  .gallery-text {
+    font-size: 16px;
+    padding: 6px 12px;
+    transform: translate(-50%, -50%) rotate(2deg);
+  }
+}

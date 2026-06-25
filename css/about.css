@@ -1,0 +1,153 @@
+/* ====== БАЗОВЫЕ СТИЛИ ====== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f3e6;
+  width: 1280px;
+  font-family: "Pribambas", sans-serif;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+.top-bar {
+  background: #eba0a5;
+  padding: 16px 0;
+  box-shadow: 0 4px 20px #f5f3e6;
+  border-bottom: 3px solid #18568f;
+}
+
+.btn-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.btn-lang,
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 40px;
+  background: #18568f;
+  color: #f5f3e6;
+  font-size: 15px;
+  font-weight: 700;
+  font-family: "Pribambas", sans-serif;
+  text-decoration: none;
+  border: 2px solid #18568f;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  min-width: 60px;
+  letter-spacing: 0.5px;
+}
+
+.btn-main:hover {
+  background: #f5f3e6;
+  color: #18568f;
+  border-color: #18568f;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px #eba0a5;
+}
+
+.btn-lang.active {
+  background: #f5f3e6;
+  color: #18568f;
+  border-color: #18568f;
+  box-shadow: 0 0 0 3px #eba0a5;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #18568f;
+  border: 2px solid #18568f;
+  margin-top: 20px;
+}
+
+.btn-secondary:hover {
+  background: #18568f;
+  color: #f5f3e6;
+}
+
+.content-section {
+  padding: 60px 0;
+  text-align: center;
+}
+
+h1 {
+  color: #18568f;
+  font-size: 36px;
+  font-family: "Pribambas", sans-serif;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #18568f;
+  font-size: 20px;
+  font-family: "Pribambas", sans-serif;
+  margin-bottom: 20px;
+}
+p {
+  color: #18568f;
+  font-size: 1.2rem;
+  font-family: "Pribambas", sans-serif;
+  max-width: 600px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .btn-row {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .btn-lang,
+  .btn-main {
+    padding: 8px 14px;
+    font-size: 13px;
+    min-width: 50px;
+  }
+
+  .divider {
+    height: 20px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn-lang,
+  .btn-main {
+    padding: 6px 10px;
+    font-size: 11px;
+    min-width: 40px;
+    border-radius: 30px;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  h1 {
+    font-size: 22px;
+  }
+}
