@@ -97,7 +97,7 @@
   overflow-y: auto;
 }
 
-/* Стилизация скроллбара */
+/* диз */
 .comments-list::-webkit-scrollbar {
   width: 8px;
 }
@@ -391,8 +391,6 @@
   border-color: #eba0a5;
   color: #18568f;
 }
-
-/* ====== АДАПТИВНОСТЬ ====== */
 @media (max-width: 1024px) {
   .links-section {
     height: auto;

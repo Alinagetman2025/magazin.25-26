@@ -1,17 +1,14 @@
-/* ====== БАЗОВЫЕ СТИЛИ ====== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background: #f5f3e6;
   width: 1280px;
   font-family: "Pribambas", sans-serif;
   min-height: 100vh;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -23,7 +20,6 @@ body {
   box-shadow: 0 4px 20px #f5f3e6;
   border-bottom: 3px solid #18568f;
 }
-
 .btn-row {
   display: flex;
   align-items: center;
@@ -31,7 +27,6 @@ body {
   gap: 8px;
   flex-wrap: nowrap;
 }
-
 .btn-lang,
 .btn-main {
   display: inline-flex;
@@ -53,7 +48,6 @@ body {
   min-width: 60px;
   letter-spacing: 0.5px;
 }
-
 .btn-main:hover {
   background: #f5f3e6;
   color: #18568f;
@@ -61,31 +55,26 @@ body {
   transform: translateY(-2px);
   box-shadow: 0 4px 15px #eba0a5;
 }
-
 .btn-lang.active {
   background: #f5f3e6;
   color: #18568f;
   border-color: #18568f;
   box-shadow: 0 0 0 3px #eba0a5;
 }
-
 .btn-secondary {
   background: transparent;
   color: #18568f;
   border: 2px solid #18568f;
   margin-top: 20px;
 }
-
 .btn-secondary:hover {
   background: #18568f;
   color: #f5f3e6;
 }
-
 .content-section {
   padding: 60px 0;
   text-align: center;
 }
-
 h1 {
   color: #18568f;
   font-size: 36px;
@@ -133,7 +122,6 @@ p {
     font-size: 1rem;
   }
 }
-
 @media (max-width: 480px) {
   .btn-lang,
   .btn-main {
@@ -149,5 +137,298 @@ p {
 
   h1 {
     font-size: 22px;
+  }
+}
+/* 404 */
+.error-404 {
+  background: #eba0a5;
+  width: 1280px;
+  max-width: 100%;
+  min-height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.error-container {
+  text-align: center;
+  max-width: 800px;
+  width: 100%;
+  position: relative;
+}
+
+.error-title {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 120px;
+  font-weight: 900;
+  margin: 0;
+  line-height: 1;
+  text-shadow: 0 8px 40px rgba(24, 86, 143, 0.15);
+}
+
+.error-text {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 36px;
+  font-weight: 700;
+  margin: 10px 0 5px;
+}
+
+.error-desc {
+  color: #18568f;
+  font-family: "Pribambas", sans-serif;
+  font-size: 20px;
+  opacity: 0.7;
+  margin-bottom: 30px;
+}
+
+.btn-error {
+  display: inline-block;
+  padding: 14px 40px;
+  border-radius: 40px;
+  background: #18568f;
+  color: #f5f3e6;
+  font-family: "Pribambas", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid #18568f;
+  transition: all 0.3s ease;
+  margin-bottom: 40px;
+  cursor: pointer;
+}
+
+.btn-error:hover {
+  background: #f5f3e6;
+  color: #18568f;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(24, 86, 143, 0.3);
+}
+
+.ball-container {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  overflow: visible;
+  margin-top: 20px;
+}
+
+.bouncing-ball {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  bottom: 0;
+  left: 0;
+  animation: bounceBall 4s ease-in-out infinite;
+}
+
+@keyframes bounceBall {
+  0% {
+    left: 0;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  4% {
+    bottom: 150px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  8% {
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  10% {
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  14% {
+    left: 15%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  18% {
+    left: 15%;
+    bottom: 140px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  22% {
+    left: 15%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  24% {
+    left: 15%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  28% {
+    left: 30%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  32% {
+    left: 30%;
+    bottom: 150px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  36% {
+    left: 30%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  38% {
+    left: 30%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  42% {
+    left: 45%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  46% {
+    left: 45%;
+    bottom: 140px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  50% {
+    left: 45%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  52% {
+    left: 45%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  56% {
+    left: 60%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  60% {
+    left: 60%;
+    bottom: 150px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  64% {
+    left: 60%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  66% {
+    left: 60%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  70% {
+    left: 75%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  74% {
+    left: 75%;
+    bottom: 140px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  78% {
+    left: 75%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  80% {
+    left: 75%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  84% {
+    left: 90%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  88% {
+    left: 90%;
+    bottom: 150px;
+    transform: scaleX(0.9) scaleY(1.1);
+  }
+  92% {
+    left: 90%;
+    bottom: 0;
+    transform: scaleX(1.2) scaleY(0.8);
+  }
+  94% {
+    left: 90%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+
+  98% {
+    left: 100%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+  100% {
+    left: 100%;
+    bottom: 0;
+    transform: scaleX(1) scaleY(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .error-title {
+    font-size: 80px;
+  }
+
+  .error-text {
+    font-size: 28px;
+  }
+
+  .error-desc {
+    font-size: 18px;
+  }
+
+  .bouncing-ball {
+    width: 60px;
+    height: 60px;
+  }
+
+  .ball-container {
+    height: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .error-title {
+    font-size: 60px;
+  }
+
+  .error-text {
+    font-size: 22px;
+  }
+
+  .error-desc {
+    font-size: 16px;
+  }
+
+  .btn-error {
+    padding: 10px 25px;
+    font-size: 15px;
+  }
+
+  .bouncing-ball {
+    width: 45px;
+    height: 45px;
+  }
+
+  .ball-container {
+    height: 120px;
   }
 }
