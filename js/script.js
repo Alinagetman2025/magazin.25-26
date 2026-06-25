@@ -374,3 +374,292 @@ if (fontSizeToggle) {
     showNotification(`Размер шрифта: ${levelText}`);
   });
 }
+/*товары */
+document.querySelectorAll(".btn-select").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const card = this.closest(".product-card");
+    const name = card.querySelector(".product-name").textContent;
+    const price = card.querySelector(".product-price").textContent;
+    const id = this.dataset.id;
+
+    // Переключаем состояние
+    this.classList.toggle("selected");
+
+    if (this.classList.contains("selected")) {
+      // Выбрано → показываем галочку
+      console.log(` Выбран товар: ${name} (${price})`);
+      showNotification(`Выбран товар: ${name}`);
+
+      // Можно добавить в список выбранных
+      addToSelected(id, name, price);
+    } else {
+      // Отмена выбора
+      console.log(` Отменён выбор: ${name}`);
+      showNotification(`Отменён выбор: ${name}`);
+
+      // Можно убрать из списка выбранных
+      removeFromSelected(id);
+    }
+  });
+});
+
+let selectedItems = [];
+
+function addToSelected(id, name, price) {
+  // Проверяем, нет ли уже такого товара
+  const exists = selectedItems.find((item) => item.id === id);
+  if (!exists) {
+    selectedItems.push({ id, name, price });
+    updateSelectedCount();
+  }
+}
+
+function removeFromSelected(id) {
+  selectedItems = selectedItems.filter((item) => item.id !== id);
+  updateSelectedCount();
+}
+
+function updateSelectedCount() {
+  const countEl = document.querySelector(".selected-count");
+  if (countEl) {
+    countEl.textContent = selectedItems.length;
+    countEl.style.display = selectedItems.length > 0 ? "block" : "none";
+  }
+  console.log(`📦 Выбрано товаров: ${selectedItems.length}`);
+}
+
+function showSelectedItems() {
+  if (selectedItems.length === 0) {
+    showNotification("Нет выбранных товаров");
+    return;
+  }
+
+  let message = "ВЫБРАННЫЕ ТОВАРЫ:\n";
+  selectedItems.forEach((item, index) => {
+    message += `${index + 1}. ${item.name} — ${item.price}\n`;
+  });
+  alert(message);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  const topBar = document.querySelector(".top-bar .container .btn-row");
+  if (topBar) {
+    const btn = document.createElement("button");
+    btn.className = "btn-main";
+    btn.textContent = "ВЫБРАННОЕ";
+    btn.style.position = "relative";
+    btn.addEventListener("click", showSelectedItems);
+    topBar.appendChild(btn);
+
+    const count = document.createElement("span");
+    count.className = "selected-count";
+    count.style.cssText = `
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #eba0a5;
+            color: #18568f;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            font-weight: 700;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-family: "Pribambas", sans-serif;
+        `;
+    btn.appendChild(count);
+  }
+});
+
+function showNotification(message) {
+  const oldNotif = document.querySelector(".notification");
+  if (oldNotif) oldNotif.remove();
+
+  const notif = document.createElement("div");
+  notif.className = "notification";
+  notif.textContent = message;
+  notif.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #18568f;
+        color: #f5f3e6;
+        padding: 12px 30px;
+        border-radius: 40px;
+        font-family: "Pribambas", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        border: 2px solid #eba0a5;
+        animation: slideUp 0.3s ease;
+    `;
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.style.opacity = "0";
+    notif.style.transition = "opacity 0.3s ease";
+    setTimeout(() => notif.remove(), 300);
+  }, 2000);
+}
+/*коризна часть 2 */
+
+let cartItems = [];
+
+function addToCart(id, name, price) {
+  const existing = cartItems.find((item) => item.id === id);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cartItems.push({
+      id: id,
+      name: name,
+      price: price,
+      quantity: 1,
+    });
+  }
+
+  updateCartDisplay();
+  showNotification(`Товар добавлен в корзину: ${name}`);
+}
+
+function removeFromCart(id) {
+  cartItems = cartItems.filter((item) => item.id !== id);
+  updateCartDisplay();
+  showNotification("Товар удалён из корзины");
+}
+
+function updateCartDisplay() {
+  const cartList = document.getElementById("cartItems");
+  const cartCount = document.querySelector(".cart-count-header");
+  const totalPrice = document.getElementById("cartTotalPrice");
+
+  if (!cartList) return;
+
+  if (cartItems.length === 0) {
+    cartList.innerHTML = `<p class="cart-empty">Корзина пуста</p>`;
+    if (cartCount) cartCount.textContent = "0";
+    if (totalPrice) totalPrice.textContent = "0 ₽";
+    return;
+  }
+
+  let html = "";
+  let total = 0;
+
+  cartItems.forEach((item) => {
+    const itemTotal = item.price * item.quantity;
+    total += itemTotal;
+
+    html += `
+            <div class="cart-item" data-id="${item.id}">
+                <span class="cart-item-name">${item.name}</span>
+                <span class="cart-item-price">${itemTotal} ₽</span>
+                <button class="cart-item-remove" data-id="${item.id}">✕</button>
+            </div>
+        `;
+  });
+
+  cartList.innerHTML = html;
+
+  if (cartCount) cartCount.textContent = cartItems.length;
+
+  if (totalPrice) totalPrice.textContent = total + " ₽";
+
+  document.querySelectorAll(".cart-item-remove").forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const id = this.dataset.id;
+      removeFromCart(id);
+    });
+  });
+}
+
+function checkout() {
+  if (cartItems.length === 0) {
+    showNotification("Корзина пуста! Добавьте товары.");
+    return;
+  }
+
+  const total = cartItems.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0,
+  );
+
+  let message = "НОВЫЙ ЗАКАЗ:\n\n";
+  cartItems.forEach((item) => {
+    message += `${item.name} × ${item.quantity} = ${item.price * item.quantity} ₽\n`;
+  });
+  message += `\nИтого: ${total} ₽`;
+
+  alert(message);
+
+  cartItems = [];
+  updateCartDisplay();
+  showNotification("Заказ оформлен! Спасибо!");
+}
+
+document.querySelectorAll(".btn-select").forEach((btn) => {
+  btn.addEventListener("click", function () {
+    const card = this.closest(".product-card");
+    const name = card.querySelector(".product-name").textContent;
+    const priceText = card.querySelector(".product-price").textContent;
+    const price = parseInt(priceText.replace(/\s/g, "").replace("₽", ""));
+    const id = this.dataset.id;
+
+    this.classList.toggle("selected");
+
+    if (this.classList.contains("selected")) {
+      addToCart(id, name, price);
+    } else {
+      removeFromCart(id);
+    }
+  });
+});
+
+const checkoutBtn = document.getElementById("checkoutBtn");
+if (checkoutBtn) {
+  checkoutBtn.addEventListener("click", checkout);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  updateCartDisplay();
+  console.log("🛒 Корзина готова!");
+});
+
+function showNotification(message) {
+  const oldNotif = document.querySelector(".notification");
+  if (oldNotif) oldNotif.remove();
+
+  const notif = document.createElement("div");
+  notif.className = "notification";
+  notif.textContent = message;
+  notif.style.cssText = `
+        position: fixed;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: #18568f;
+        color: #f5f3e6;
+        padding: 12px 30px;
+        border-radius: 40px;
+        font-family: "Pribambas", sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        z-index: 9999;
+        border: 2px solid #eba0a5;
+        animation: slideUp 0.3s ease;
+    `;
+
+  document.body.appendChild(notif);
+
+  setTimeout(() => {
+    notif.style.opacity = "0";
+    notif.style.transition = "opacity 0.3s ease";
+    setTimeout(() => notif.remove(), 300);
+  }, 2000);
+}
